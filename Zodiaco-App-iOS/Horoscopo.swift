@@ -19,6 +19,7 @@ struct Horoscopo {
     }
     }
     
+
     static let horoscopoList: [Horoscopo] = [
         Horoscopo(id: "1", name: "aries", dates: "21 de enero al 18 de febrero"),
         Horoscopo(id: "2", name: "taurus", dates: "19 de febrero al 19 de marzo"),
