@@ -14,25 +14,24 @@ struct Horoscopo {
     let dates: String
     
     
-    func getIconName() -> UIImage? {
-        UIImage(named: "")
-    }
-    }
-    
-
-    static let horoscopoList: [Horoscopo] = [
-        Horoscopo(id: "1", name: "aries", dates: "21 de enero al 18 de febrero"),
-        Horoscopo(id: "2", name: "taurus", dates: "19 de febrero al 19 de marzo"),
-        Horoscopo(id: "3", name: "gemini", dates: "20 de marzo al 20 de abril"),
-        Horoscopo(id: "4", name: "cancer", dates: "21 de abril al 20 de mayo"),
-        Horoscopo(id: "5", name: "leo", dates: "21 de mayo al 20 de junio"),
-        Horoscopo(id: "6", name: "virgo", dates: "21 de junio al 22 de julio"),
-        Horoscopo(id: "7", name: "libra", dates: "23 de julio al 22 de agosto"),
-        Horoscopo(id: "8", name: "scorpio", dates: "23 de agosto al 22 de septiembre"),
-        Horoscopo(id: "9", name: "sagittarius", dates: "23 de septiembre al 22 de octubre"),
-        Horoscopo(id: "10", name: "capricon", dates: "23 de octubre al 21 de noviembre"),
-        Horoscopo(id: "11", name: "acuarius", dates: "22 de noviembre al 21 de diciembre"),
-        Horoscopo(id: "12", name: "pisces", dates: "22 de diciembre al 19 de enero"),
-    ]
+        
+        func getIcon() -> UIImage? {
+            UIImage(named: "horoscopo_icons/\(id)_icon")
+        }
+        
+        static let horoscopeList: [Horoscopo] = [
+            Horoscopo(id: "aries", name: "Aries", dates: "21 de marzo al 19 de abril"),
+            Horoscopo(id: "taurus", name: "Tauro", dates: "20 de abril al 20 de mayo"),
+            Horoscopo(id: "gemini", name: "Geminis", dates: "21 de mayo al 20 de junio"),
+            Horoscopo(id: "cancer", name: "Cancer", dates: "21 de junio al 22 de julio"),
+            Horoscopo(id: "leo", name: "Leo", dates: "23 de julio al 22 de agosto"),
+            Horoscopo(id: "virgo", name: "Virgo", dates: "23 de agosto al 22 de septiembre"),
+            Horoscopo(id: "libra", name: "Libra", dates: "23 de septiembre al 22 de octubre"),
+            Horoscopo(id: "scorpio", name: "Escorpio", dates: "23 de octubre al 21 de noviembre"),
+            Horoscopo(id: "sagittarius", name: "Sagitario", dates: "22 de noviembre al 21 de diciembre"),
+            Horoscopo(id: "capricorn", name: "Capricornio", dates: "22 de diciembre al 19 de enero"),
+            Horoscopo(id: "aquarius", name: "Acuario", dates: "20 de enero al 18 de febrero"),
+            Horoscopo(id: "pisces", name: "Piscis", dates: "19 de febrero al 20 de marzo")
+        ]
     
 }
