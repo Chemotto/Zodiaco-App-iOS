@@ -14,7 +14,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var horocospolist = Horoscopo.horoscopeList
+    var horoscopeList = Horoscopo.horoscopeList
     
 
     override func viewDidLoad() {
@@ -27,14 +27,14 @@ class ListViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return horocospolist.count
+        return horoscopeList.count
         
     
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Horoscopo Cell", for: indexPath) as! HoroscopoViewCell
-        let horoscope = horocospolist[indexPath.row]
+        let horoscope = horoscopeList[indexPath.row]
         cell.configure(with: horoscope)
         
         return cell
@@ -42,7 +42,13 @@ class ListViewController: UIViewController, UITableViewDataSource {
     
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailViewController = segue.destination as! DetailViewController
+        let indexPath = tableView.indexPathForSelectedRow!
+        let horoscope = horoscopeList[indexPath.row]
+        detailViewController.horoscope = horoscope
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
 }
 
