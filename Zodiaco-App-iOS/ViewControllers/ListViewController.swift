@@ -32,6 +32,12 @@ class ListViewController: UIViewController, UITableViewDataSource, UISearchBarDe
         
         // MARK: TableView DataSource
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return horoscopeList.count
