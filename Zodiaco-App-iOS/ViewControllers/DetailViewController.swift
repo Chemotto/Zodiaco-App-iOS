@@ -9,12 +9,17 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    
+    // MARK: Outlets
+    
     @IBOutlet weak var iconImageView: UIImageView!
+    
+    
+    // MARK: Properties
     
     var horoscope: Horoscopo!
     
-    
-    
+    // MARK: Lifecycle
     
     
     override func viewDidLoad() {

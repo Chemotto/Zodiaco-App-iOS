@@ -7,23 +7,30 @@
 
 import UIKit
 
-class ListViewController: UIViewController, UITableViewDataSource {
+class ListViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
 
-    
+    // MARK: Outlets
     
     
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: Properties
+    
     var horoscopeList = Horoscopo.horoscopeList
     
-
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
        tableView.dataSource = self
         
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
         
+        // MARK: TableView DataSource
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,9 +45,33 @@ class ListViewController: UIViewController, UITableViewDataSource {
         cell.configure(with: horoscope)
         
         return cell
-        
-    
     }
+    
+    
+    // MARK: SearchBar Delegate
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            horoscopeList = Horoscopo.horoscopeList
+        } else {
+            horoscopeList = Horoscopo.horoscopeList.filter{ horoscope in
+                horoscope.name.localizedCaseInsensitiveContains(searchText) || horoscope.dates.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("Buscar: \(searchBar.text ?? "")")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        horoscopeList = Horoscopo.horoscopeList
+        tableView.reloadData()
+    }
+    
+    
+    // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailViewController = segue.destination as! DetailViewController
